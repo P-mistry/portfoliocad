@@ -8,6 +8,8 @@ import githubLight from '../../assets/github-light.svg';
 import githubDark from '../../assets/github-dark.svg';
 import linkedinLight from '../../assets/linkedin-light.svg';
 import linkedinDark from '../../assets/linkedin-dark.svg';
+import instagramLight from '../../assets/instagram-light.svg';
+import instagramDark from '../../assets/instagram-dark.svg';
 import CV from '../../assets/cv.pdf';
 import { useTheme } from '../../common/ThemeContext';
 
@@ -18,6 +20,7 @@ function Hero() {
   const twitterIcon = theme === 'light' ? twitterLight : twitterDark;
   const githubIcon = theme === 'light' ? githubLight : githubDark;
   const linkedinIcon = theme === 'light' ? linkedinLight : linkedinDark;
+  const instagramIcon = theme === 'light' ? instagramDark : instagramLight;
 
   return (
     <section id="hero" className={styles.container}>
@@ -38,7 +41,7 @@ function Hero() {
         <h1>
           Parth
           <br />
-           Mistry
+          Mistry
         </h1>
         <h2>Software Developer</h2>
         <span>
@@ -50,6 +53,9 @@ function Hero() {
           </a>
           <a href="https://www.linkedin.com/in/parthmistry7/" target="_blank">
             <img src={linkedinIcon} alt="Linkedin icon" />
+          </a>
+          <a href="https://www.instagram.com/parrth.5/" target="_blank">
+            <img src={instagramIcon} alt="Instagram icon" />
           </a>
         </span>
         <p className={styles.description}>

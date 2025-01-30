@@ -23,6 +23,7 @@ body {
   display: flex;
   justify-content: center;
   margin: 0 auto 60px;
+  color: var(--text-color); /* Add this line */
 }
 
 #root {
@@ -38,6 +39,7 @@ p {
   color: var(--text-color);
   margin: 0;
   padding: 0;
+  transition: color 0.3s ease; /* Add this line */
 }
 
 h2,
