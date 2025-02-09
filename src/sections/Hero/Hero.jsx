@@ -47,7 +47,7 @@ function Hero() {
           <br />
           Mistry
         </h1>
-        <h2>Software Developer</h2>
+        <h2>Software Developers</h2>
         <span>
           <a href="https://x.com/parth200510" target="_blank">
             <img src={twitterIcon} alt="Twitter icon" />
@@ -70,7 +70,7 @@ function Hero() {
           businesses.
         </p>
         <a href={CV} download>
-          <button className="hover">Resumes</button>
+          <button className="hover">Resume</button>
         </a>
       </div>
     </section>
