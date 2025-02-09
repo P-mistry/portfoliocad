@@ -70,7 +70,7 @@ function Hero() {
           businesses.
         </p>
         <a href={CV} download>
-          <button className="hover">Resume</button>
+          <button className="hover">Resumes</button>
         </a>
       </div>
     </section>
