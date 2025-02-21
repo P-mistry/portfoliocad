@@ -22,8 +22,8 @@ function Hero() {
   const twitterIcon = theme === 'light' ? twitterLight : twitterDark;
   const githubIcon = theme === 'light' ? githubLight : githubDark;
   const linkedinIcon = theme === 'light' ? linkedinLight : linkedinDark;
-  const instagramIcon = theme === 'light' ? instagramLight : instagramDark;
-  const websiteIcon = theme === 'light' ? websiteLight : websiteDark;
+  const instagramIcon = theme === 'light' ? instagramDark : instagramLight;
+  const websiteIcon = theme === 'light' ? websiteDark : websiteLight;
 
 
   return (
@@ -56,7 +56,6 @@ function Hero() {
             <img src={githubIcon} alt="Github icon" />
           </a>
           <a href="https://www.linkedin.com/in/parthmistry7/" target="_blank">
-          
             <img src={linkedinIcon} alt="Linkedin icon" />
           </a>
           <a href="https://www.instagram.com/parrth.5/" target="_blank">
