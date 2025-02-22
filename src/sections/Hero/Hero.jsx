@@ -14,8 +14,10 @@ import websiteLight from '../../assets/website-light.svg';
 import websiteDark from '../../assets/website-dark.svg';
 import CV from '../../assets/cv.pdf';
 import { useTheme } from '../../common/ThemeContext';
+import { useEffect, useState } from 'react';
 
 function Hero() {
+  const [isVisible, setIsVisible] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
   const themeIcon = theme === 'light' ? sun : moon;
@@ -25,10 +27,25 @@ function Hero() {
   const instagramIcon = theme === 'light' ? instagramDark : instagramLight;
   const websiteIcon = theme === 'light' ? websiteDark : websiteLight;
 
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const fadeInUp = {
+    opacity: isVisible ? 1 : 0,
+    transform: `translateY(${isVisible ? 0 : '30px'})`,
+    transition: 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
+  };
 
   return (
-    <section id="hero" className={styles.container}>
-      <div className={styles.colorModeContainer}>
+    <section id="hero" className={`${styles.container} ${styles.gradientBackground}`}>
+      <div 
+        className={styles.colorModeContainer} 
+        style={{
+          ...fadeInUp,
+          transitionDelay: '0.2s'
+        }}
+      >
         <img
           src={heroImg}
           className={styles.hero}
@@ -41,7 +58,13 @@ function Hero() {
           onClick={toggleTheme}
         />
       </div>
-      <div className={styles.info}>
+      <div 
+        className={styles.info} 
+        style={{
+          ...fadeInUp,
+          transitionDelay: '0.4s'
+        }}
+      >
         <h1>
           Parth
           <br />
@@ -49,27 +72,37 @@ function Hero() {
         </h1>
         <h2>Software Developer</h2>
         <span>
-          <a href="https://x.com/parth200510" target="_blank">
-            <img src={twitterIcon} alt="Twitter icon" />
-          </a>
-          <a href="https://github.com/P-mistry" target="_blank">
-            <img src={githubIcon} alt="Github icon" />
-          </a>
-          <a href="https://www.linkedin.com/in/parthmistry7/" target="_blank">
-            <img src={linkedinIcon} alt="Linkedin icon" />
-          </a>
-          <a href="https://www.instagram.com/parrth.5/" target="_blank">
-            <img src={instagramIcon} alt="Instagram icon" />
-          </a>
-          <a href="https://www.vwcindia.com/" target="_blank">
-            <img src={websiteIcon} alt="Website icon" />
-          </a>
+          {[
+            { href: "https://x.com/parth200510", icon: twitterIcon, alt: "Twitter" },
+            { href: "https://github.com/P-mistry", icon: githubIcon, alt: "Github" },
+            { href: "https://www.linkedin.com/in/parthmistry7/", icon: linkedinIcon, alt: "LinkedIn" },
+            { href: "https://www.instagram.com/parrth.5/", icon: instagramIcon, alt: "Instagram" },
+            { href: "https://www.vwcindia.com/", icon: websiteIcon, alt: "Website" }
+          ].map((social, index) => (
+            <a 
+              key={social.alt}
+              href={social.href} 
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                transitionDelay: `${0.6 + (index * 0.1)}s`
+              }}
+            >
+              <img src={social.icon} alt={`${social.alt} icon`} />
+            </a>
+          ))}
         </span>
         <p className={styles.description}>
           With a passion for developing modern React web apps for commercial
           businesses.
         </p>
-        <a href={CV} download>
+        <a 
+          href={CV} 
+          download
+          style={{
+            transitionDelay: '1s'
+          }}
+        >
           <button className="hover">Resume</button>
         </a>
       </div>
