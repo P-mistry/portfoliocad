@@ -65,11 +65,7 @@ function Hero() {
           transitionDelay: '0.4s'
         }}
       >
-        <h1>
-          Parth
-          <br />
-          Mistry
-        </h1>
+        <h1>Parth Mistry</h1>
         <h2>Software Developer</h2>
         <span>
           {[
