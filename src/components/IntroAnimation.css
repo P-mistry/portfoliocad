@@ -1,0 +1,76 @@
+.intro-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeOut 1.2s 2.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.intro-logo {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 24px;
+  opacity: 0;
+  transform: scale(0.92);
+  animation: logoIn 1.4s cubic-bezier(0.4, 0, 0.2, 1) forwards, logoOut 0.8s 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.intro-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: #222;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: titleIn 1.2s 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards, titleOut 0.8s 2.1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes logoIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes logoOut {
+  to {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes titleIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes titleOut {
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+  }
+} 
