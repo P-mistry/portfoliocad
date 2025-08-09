@@ -1,46 +1,68 @@
 import styles from './ProjectsStyles.module.css';
-import viberr from '../../assets/viberr.png';
-import freshBurger from '../../assets/fresh-burger.png';
-import hipsster from '../../assets/hipsster.png';
-import fitLift from '../../assets/fitlift.png';
-import ProjectCard from '../../common/ProjectCard';
 
 function Projects() {
+  const projectEntries = [
+    {
+      title: 'Project One',
+      href: 'https://example.com',
+      dateLabel: 'Jun. 2025',
+      roleLabel: 'Dev',
+      designCreditLabel: 'Design: Your Designer',
+    },
+    {
+      title: 'Project Two',
+      href: 'https://example.com',
+      dateLabel: 'Apr. 2025',
+      roleLabel: 'Dev',
+      designCreditLabel: 'Design: Your Designer',
+    },
+    {
+      title: 'Project Three',
+      href: 'https://example.com',
+      dateLabel: 'Oct. 2024',
+      roleLabel: 'Design & Dev',
+      designCreditLabel: '',
+    },
+    {
+      title: 'Project Four',
+      href: 'https://example.com',
+      dateLabel: 'Jul. 2024',
+      roleLabel: 'Dev',
+      designCreditLabel: 'Design: Your Designer',
+    },
+  ];
+
   return (
     <section id="projects" className={styles.container}>
       <h1 className="sectionTitle">Projects</h1>
-      <div className={styles.projectsContainer}>
-        {/* Project Card for Viberr Streaming App */}
-        <ProjectCard
-          src={viberr}
-          link="https://github.com/Ade-mir/company-landing-page-2"
-          h3="Viberr"
-          p="Streaming App"
-        />
-        {/* Project Card for Fresh Burger Restaurant */}
-        <ProjectCard
-          src={freshBurger}
-          link="https://github.com/Ade-mir/company-landing-page-2"
-          h3="Fresh Burger"
-          p="Hamburger Restaurant"
-        />
-        {/* Project Card for Hipsster Glasses Shop */}
-        <ProjectCard
-          src={hipsster}
-          link="https://github.com/Ade-mir/company-landing-page-2"
-          h3="Hipsster"
-          p="Glasses Shop"
-        />
-        {/* Project Card for FitLift Fitness App */}
-        <ProjectCard
-          src={fitLift}
-          link="https://github.com/Ade-mir/company-landing-page-2"
-          h3="FitLift"
-          p="Fitness App"
-        />
-      </div>
+      <ul className={styles.list}>
+        {projectEntries.map((project) => (
+          <li key={project.title} className={styles.item}>
+            <a
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${styles.title} hover`}
+            >
+              {project.title}
+            </a>
+            <div className={styles.meta}>
+              <span>{project.dateLabel}</span>
+              <span className={styles.separator}>/</span>
+              <span>{project.roleLabel}</span>
+              {project.designCreditLabel && (
+                <>
+                  <span className={styles.separator}>/</span>
+                  <span>{project.designCreditLabel}</span>
+                </>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
 
 export default Projects;
+
