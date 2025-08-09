@@ -3,32 +3,32 @@ import styles from './ProjectsStyles.module.css';
 function Projects() {
   const projectEntries = [
     {
-      title: 'Ai Resume',
-      href: 'https://github.com/P-mistry/Ai-Resume',
+      title: 'Project One',
+      href: 'https://example.com',
       dateLabel: 'Jun. 2025',
       roleLabel: 'Dev',
-      designCreditLabel: 'Design: Parth MIstry',
+      designCreditLabel: 'Design: Your Designer',
     },
     {
-      title: 'Travel UI/UX',
-      href: 'https://github.com/P-mistry/Travel_UI-UX',
+      title: 'Project Two',
+      href: 'https://example.com',
       dateLabel: 'Apr. 2025',
       roleLabel: 'Dev',
-      designCreditLabel: 'Design: Parth MIstry',
+      designCreditLabel: 'Design: Your Designer',
     },
     {
-      title: 'Login App',
-      href: 'https://github.com/P-mistry/Login-App-AndroidStudio',
+      title: 'Project Three',
+      href: 'https://example.com',
       dateLabel: 'Oct. 2024',
       roleLabel: 'Design & Dev',
       designCreditLabel: '',
     },
     {
-      title: 'Handwriting Digit Recognition',
-      href: 'https://github.com/P-mistry/Handwriting-Digit-Recognition',
+      title: 'Project Four',
+      href: 'https://example.com',
       dateLabel: 'Jul. 2024',
       roleLabel: 'Dev',
-      designCreditLabel: 'Design: Parth MIstry',
+      designCreditLabel: 'Design: Your Designer',
     },
   ];
 

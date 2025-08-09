@@ -5,6 +5,18 @@
   padding: 1rem;
 }
 
+.sectionTitle {
+  text-align: center;
+}
+
+.panel {
+  border: 1px dashed var(--footer-text-color);
+  background: rgba(var(--background-color-rgb), 0.35);
+  backdrop-filter: blur(3px);
+  border-radius: 8px;
+  padding: 16px;
+}
+
 .list {
   list-style: none;
   display: grid;
@@ -17,9 +29,9 @@
   flex-direction: column;
   gap: 6px;
   padding: 10px 6px;
-  border-radius: 10px;
-  background: rgba(var(--background-color-rgb), 0.3);
-  backdrop-filter: blur(4px);
+  border-radius: 6px;
+  background: transparent;
+  transition: background-color 0.25s ease;
 }
 
 .title {
@@ -42,6 +54,16 @@
   opacity: 0.5;
 }
 
+.designerLink {
+  color: inherit;
+  text-underline-offset: 2px;
+}
+
+.item:hover,
+.item:focus-within {
+  background: rgba(var(--background-color-rgb), 0.25);
+}
+
 @media (width >= 800px) {
   .list {
     grid-template-columns: 1fr 1fr;
@@ -51,4 +73,5 @@
     padding: 14px 10px;
   }
 }
+
 
