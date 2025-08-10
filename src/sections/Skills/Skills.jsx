@@ -13,22 +13,10 @@ function Skills() {
   const { theme } = useTheme();
   const checkMarkIcon = theme === 'light' ? checkMarkIconLight : checkMarkIconDark;
 
-  const skills = [
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "TypeScript",
-    "Node",
-    "React",
-    "Angular",
-    "Vue",
-    "Tailwind CSS",
-    "Redux",
-    "Webpack",
-    "Git",
-    "Jest",
-    "Bootstrap",
-  ];
+    const skills = [
+      "HTML", "CSS", "JavaScript", "React", "Node.js",
+      "Python", "SQL", "Git", "Figma", "Tailwind CSS"
+    ];
 
   return (
     <section id="skills" className={styles.container}>
@@ -36,12 +24,12 @@ function Skills() {
       <Swiper
         modules={[Autoplay]}
         slidesPerView="auto"
-        spaceBetween={50}
+        spaceBetween={10}
         loop={true}
         speed={7000}
         autoplay={{
           delay: 0,
-          disableOnInteraction: false,
+          disableOnInteraction: true,
           reverseDirection: false,
         }}
         allowTouchMove={false}

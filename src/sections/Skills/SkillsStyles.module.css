@@ -33,7 +33,7 @@
 hr {
   width: 100px;
   height: 1px;
-  border: none;
+  border:  none;
   background-color: var(--text-color);
   margin: 30px auto;
 }
