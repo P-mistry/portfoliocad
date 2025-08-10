@@ -4,68 +4,79 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: #fff;
+  background-color: red; /* Netflix red */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  animation: fadeOut 1.2s 2.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  overflow: hidden;
+  animation: fadeOut 1.2s 3.8s forwards;
 }
 
 .intro-logo {
-  width: 120px;
-  height: 120px;
+  position: relative;
+  width: 140px;
+  height: 140px;
   margin-bottom: 24px;
-  opacity: 0;
-  transform: scale(0.92);
-  animation: logoIn 1.4s cubic-bezier(0.4, 0, 0.2, 1) forwards, logoOut 0.8s 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.intro-title {
-  font-family: 'Playfair Display', serif;
+/* M parts with visible height */
+.m-part {
+  position: absolute;
+  top: 0;
+  width: 40px;
+  height: 140px;  /* fix height so visible */
+  background: white;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.m-left {
+  left: 0;
+  transform-origin: left center;
+  animation: slideInLeft 1.2s forwards;
+}
+
+.m-right {
+  right: 0;
+  transform-origin: right center;
+  animation: slideInRight 1.2s 0.3s forwards;
+}
+
+.m-middle {
+  left: 40px;
+  top: 0;
+  width: 60px;
+  height: 140px;
+  background: white;
+  transform: skewX(-25deg) scaleX(0);
+  animation: middleExpand 1.2s 0.6s forwards;
+  position: absolute;
+}
+
+.intro-name {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: white;
   font-size: 2.5rem;
-  color: #222;
+  font-weight: 700;
   opacity: 0;
   transform: translateY(20px);
-  animation: titleIn 1.2s 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards, titleOut 0.8s 2.1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: nameFadeIn 1.2s 2.0s forwards;
+  user-select: none;
+  position: relative;
 }
 
-@keyframes logoIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.92);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+.line {
+  position: absolute;
+  height: 2px;
+  background: white;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: lineGrow 0.5s forwards;
 }
 
-@keyframes logoOut {
-  to {
-    opacity: 0;
-    transform: scale(1.04);
-  }
-}
-
-@keyframes titleIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes titleOut {
-  to {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-}
+/* Animations */
 
 @keyframes fadeOut {
   to {
@@ -73,4 +84,54 @@
     pointer-events: none;
     visibility: hidden;
   }
-} 
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-140px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(140px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes middleExpand {
+  from {
+    transform: skewX(-25deg) scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: skewX(-25deg) scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes nameFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lineGrow {
+  0% {
+    opacity: 1;
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}

@@ -23,7 +23,8 @@ body {
   display: flex;
   justify-content: center;
   margin: 0 auto 60px;
-  color: var(--text-color); /* Add this line */
+  color: var(--text-color);
+  font-family: 'Roboto Mono', monospace; /* Apply monospaced font */
 }
 
 #root {
@@ -39,31 +40,27 @@ p {
   color: var(--text-color);
   margin: 0;
   padding: 0;
-  transition: color 0.3s ease; /* Add this line */
+  transition: color 0.3s ease;
 }
 
 h2,
 h3,
 p {
-  font-family: 'Source Sans 3', sans-serif;
+  font-family: 'Roboto Mono', monospace; /* Apply monospaced font to these elements as well */
 }
 
-h1,
-h2 {
+h1 {
+  font-family: 'Playfair Display', serif; /* Keep Playfair Display for h1 */
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  font-size: 32px;
+  font-weight: 700;
 }
 
 h2,
 h3 {
   font-size: 20px;
   font-weight: 500;
-}
-
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 32px;
-  font-weight: 700;
 }
 
 p {

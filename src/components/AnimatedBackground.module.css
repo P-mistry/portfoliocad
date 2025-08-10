@@ -13,8 +13,8 @@
   position: absolute;
   background: radial-gradient(
     circle,
-    rgba(var(--btn-color-rgb), 0.1) 0%,
-    rgba(var(--btn-color-rgb), 0.05) 40%,
+    rgba(255, 0, 0, 0.1) 0%, /* Change color as needed */
+    rgba(255, 0, 0, 0.05) 40%,
     transparent 70%
   );
   border-radius: 50%;
@@ -29,7 +29,7 @@
   inset: -20%;
   background: radial-gradient(
     circle,
-    rgba(var(--btn-color-rgb), 0.1) 0%,
+    rgba(255, 0, 0, 0.1) 0%, /* Change color as needed */
     transparent 70%
   );
   border-radius: 50%;
@@ -89,4 +89,4 @@
   .particle::after {
     animation: none;
   }
-} 
+}

@@ -7,7 +7,7 @@ function AnimatedBackground() {
   useEffect(() => {
     const container = containerRef.current;
     let particles = [];
-    const particleCount = 3;
+    const particleCount = 20; // Increase the number of particles for a denser effect
 
     const createParticle = () => {
       const particle = document.createElement('div');
@@ -18,14 +18,14 @@ function AnimatedBackground() {
       const y = Math.random() * window.innerHeight;
       
       // Random size
-      const size = Math.random() * 200 + 100;
+      const size = Math.random() * 200 + 100; // Size between 100px and 300px
       
       particle.style.cssText = `
         left: ${x}px;
         top: ${y}px;
         width: ${size}px;
         height: ${size}px;
-        animation-delay: ${Math.random() * 5}s;
+        animation-delay: ${Math.random() * 5}s; // Random delay for each particle
       `;
 
       return particle;
@@ -49,4 +49,4 @@ function AnimatedBackground() {
   );
 }
 
-export default AnimatedBackground; 
+export default AnimatedBackground;
