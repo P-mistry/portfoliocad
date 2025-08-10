@@ -3,32 +3,34 @@ import styles from './ProjectsStyles.module.css';
 function Projects() {
   const projectEntries = [
     {
-      title: 'Project One',
-      href: 'https://example.com',
+      title: 'Ai Resume',
+      href: 'https://github.com/P-mistry/Ai-Resume',
       dateLabel: 'Jun. 2025',
       roleLabel: 'Dev',
-      designCreditLabel: 'Design: Your Designer',
+      designCreditLabel: 'Design: Parth MIstry',
+
     },
     {
-      title: 'Project Two',
-      href: 'https://example.com',
+      title: 'Travel UI/UX',
+      href: 'https://github.com/P-mistry/Travel_UI-UX',
       dateLabel: 'Apr. 2025',
       roleLabel: 'Dev',
-      designCreditLabel: 'Design: Your Designer',
+      designCreditLabel: 'Design: Parth MIstry',
+
     },
     {
-      title: 'Project Three',
-      href: 'https://example.com',
+      title: 'Login App',
+      href: 'https://github.com/P-mistry/Login-App-AndroidStudio',
+
       dateLabel: 'Oct. 2024',
       roleLabel: 'Design & Dev',
-      designCreditLabel: '',
     },
     {
-      title: 'Project Four',
-      href: 'https://example.com',
+      title: 'Handwriting Digit Recognition',
+      href: 'https://github.com/P-mistry/Handwriting-Digit-Recognition',
       dateLabel: 'Jul. 2024',
       roleLabel: 'Dev',
-      designCreditLabel: 'Design: Your Designer',
+      designCreditLabel: 'Design: Parth MIstry',
     },
   ];
 
@@ -65,4 +67,3 @@ function Projects() {
 }
 
 export default Projects;
-
