@@ -13,8 +13,8 @@
   position: absolute;
   background: radial-gradient(
     circle,
-    rgba(255, 0, 0, 0.1) 0%, /* Change color as needed */
-    rgba(255, 0, 0, 0.05) 40%,
+    rgba(var(--accent-color-rgb), 0.10) 0%,
+    rgba(var(--btn-color-rgb), 0.06) 40%,
     transparent 70%
   );
   border-radius: 50%;
@@ -29,7 +29,7 @@
   inset: -20%;
   background: radial-gradient(
     circle,
-    rgba(255, 0, 0, 0.1) 0%, /* Change color as needed */
+    rgba(var(--accent-color-rgb), 0.08) 0%,
     transparent 70%
   );
   border-radius: 50%;

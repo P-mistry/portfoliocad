@@ -15,6 +15,7 @@ import websiteDark from '../../assets/website-dark.svg';
 import CV from '../../assets/cv.pdf';
 import { useTheme } from '../../common/ThemeContext';
 import { useEffect, useState } from 'react';
+import TypeWriter from '../../components/TypeWriter';
 
 function Hero() {
   const [isVisible, setIsVisible] = useState(false);
@@ -66,7 +67,9 @@ function Hero() {
         }}
       >
         <h1>Parth Mistry</h1>
-        <h2>Software Developer</h2>
+        <h2>
+          <TypeWriter text="Software Developer" delay={40} />
+        </h2>
         <span>
           {[
             { href: "https://x.com/parth200510", icon: twitterIcon, alt: "Twitter" },

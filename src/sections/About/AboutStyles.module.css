@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.content {
+  margin: 0 auto;
+  max-width: 850px;
+  color: var(--text-color);
+}
+
+.grid {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.card {
+  border: 1px dashed var(--footer-text-color);
+  background: rgba(var(--background-color-rgb), 0.35);
+  backdrop-filter: blur(3px);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+@media (width >= 800px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+}
+
+
