@@ -1,4 +1,5 @@
 import { useState } from "react";
+import confetti from "canvas-confetti";
 import styles from './ContactStyles.module.css';
 
 function Contact() {
@@ -22,6 +23,19 @@ function Contact() {
       if (data.success) {
         setResult("Form Submitted Successfully");
         event.target.reset();
+
+        // Fire a celebratory full-screen confetti burst
+        const end = Date.now() + 800; // run for 0.8s
+        const defaults = { startVelocity: 45, spread: 360, ticks: 200, zIndex: 9999, gravity: 0.9, scalar: 1.1 };
+
+        const frame = () => {
+          const timeLeft = end - Date.now();
+          if (timeLeft <= 0) return;
+
+          confetti({ ...defaults, particleCount: 30, origin: { x: Math.random(), y: Math.random() - 0.2 } });
+          requestAnimationFrame(frame);
+        };
+        frame();
       } else {
         console.log("Error", data);
         setResult(data.message || "Submission failed");
