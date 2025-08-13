@@ -6,8 +6,9 @@ import Footer from './sections/Footer/Footer';
 import Hero from './sections/Hero/Hero';
 import Skills from './sections/Skills/Skills';
 import Projects from './sections/Projects/Projects';
-import AnimatedBackground from './components/AnimatedBackground'; // Import the AnimatedBackground component
+// Removed AnimatedBackground in favor of a global background video
 import About from './sections/About/About';
+import BackgroundVideo from './components/BackgroundVideo.jsx';
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
@@ -16,13 +17,15 @@ function App() {
 
   return (
     <>
-      <AnimatedBackground /> {/* Add the AnimatedBackground component here */}
-      <Hero />
-      <About />
-      <Projects />
-      <Skills />
-      <Contact />
-      <Footer />
+      <BackgroundVideo />
+      <div className="pageContent">
+        <Hero />
+        <About />
+        <Projects />
+        <Skills />
+        <Contact />
+        <Footer />
+      </div>
     </>
   );
 }

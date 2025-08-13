@@ -4,6 +4,8 @@
   gap: 24px;
   padding: 0 20px;
   text-align: center;
+  max-width: min(1100px, 100%);
+  margin: 0 auto;
 }
 
 .panel {
@@ -17,8 +19,8 @@
 .list {
   list-style: none;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(14px, 2.5vw, 22px);
 }
 
 .item {
@@ -29,6 +31,7 @@
   border-radius: 10px;
   background: rgba(var(--background-color-rgb), 0.3);
   backdrop-filter: blur(4px);
+  align-items: flex-start;
 }
 
 .title {
@@ -37,6 +40,7 @@
   font-weight: 700;
   font-size: clamp(1.1rem, 2.5vw, 1.4rem);
   text-align: left;
+  overflow-wrap: anywhere;
 }
 
 .meta {
@@ -64,7 +68,6 @@
 
 @media (width >= 800px) {
   .list {
-    grid-template-columns: 1fr 1fr;
     gap: 22px;
   }
   .item {

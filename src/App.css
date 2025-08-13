@@ -3,7 +3,7 @@
   --btn-color: #0987f2;
   --btn-text-color: #fff;
   --project-card-bg: #ffffff00;
-  --text-color: #222;
+  --text-color: #111; /* darker text in light mode for better contrast */
   --form-text-color: #555;
   --footer-text-color: #888;
 }

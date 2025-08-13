@@ -18,9 +18,10 @@
 }
 
 .skillSwiper {
-  width: 100ch;
+  width: min(100%, 100ch);
   padding: 30px 0;
   box-sizing: border-box;
+  contain: content;
 }
 
 .skillSlide {
