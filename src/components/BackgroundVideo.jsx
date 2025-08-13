@@ -65,6 +65,9 @@ function BackgroundVideo() {
       {isLightTheme && (
         <div className="light-bg-gradient" />
       )}
+      {!isLightTheme && (
+        <div className="dark-bg-gradient" />
+      )}
       <div className="bg-video-overlay" />
     </div>
   );

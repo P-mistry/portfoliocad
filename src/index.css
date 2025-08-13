@@ -15,6 +15,10 @@
   --light-grad-alpha-weak: 0.12;
   --light-grad-speed: 24s;
   --light-grad-angle: 0deg;
+  /* Dark BG tuning */
+  --dark-glow-alpha-strong: 0.12;
+  --dark-glow-alpha-weak: 0.06;
+  --dark-glow-speed: 36s;
 }
 
 [data-theme='dark'] {
@@ -165,8 +169,31 @@ canvas {
 
 [data-theme='dark'] .bg-video-overlay {
   background:
-    linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.35) 20%, rgba(0,0,0,0.35) 80%, rgba(0,0,0,0.7)),
-    radial-gradient(120% 120% at 50% 20%, rgba(0,0,0,0) 10%, rgba(0,0,0,0.3) 60%);
+    linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.4) 20%, rgba(0,0,0,0.4) 80%, rgba(0,0,0,0.85)),
+    radial-gradient(140% 140% at 50% 15%, rgba(0,0,0,0) 5%, rgba(0,0,0,0.35) 55%);
+}
+/* Dark theme extra subtle color glows for depth */
+[data-theme='dark'] .dark-bg-gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 80% at 20% 10%, rgba(90, 130, 255, var(--dark-glow-alpha-strong)) 0%, rgba(90, 130, 255, var(--dark-glow-alpha-weak)) 35%, rgba(90, 130, 255, 0) 70%),
+    radial-gradient(100% 70% at 82% 20%, rgba(255, 120, 140, var(--dark-glow-alpha-strong)) 0%, rgba(255, 120, 140, var(--dark-glow-alpha-weak)) 35%, rgba(255, 120, 140, 0) 70%),
+    radial-gradient(120% 90% at 50% 100%, rgba(90, 255, 200, calc(var(--dark-glow-alpha-strong) - 0.02)) 0%, rgba(90, 255, 200, var(--dark-glow-alpha-weak)) 50%, rgba(90, 255, 200, 0) 80%);
+  background-size: 140% 140%, 160% 160%, 140% 140%;
+  background-position: 18% 12%, 82% 20%, 50% 100%;
+  animation: darkGradientDrift var(--dark-glow-speed) ease-in-out infinite alternate;
+}
+
+@keyframes darkGradientDrift {
+  0% { background-position: 18% 12%, 82% 20%, 50% 100%; }
+  100% { background-position: 22% 16%, 78% 24%, 50% 96%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-theme='dark'] .dark-bg-gradient {
+    animation: none;
+  }
 }
 
 /* Smooth scrolling */
