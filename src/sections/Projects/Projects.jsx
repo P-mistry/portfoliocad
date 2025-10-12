@@ -1,6 +1,9 @@
 import styles from './ProjectsStyles.module.css';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 function Projects() {
+  const [listRef, isListVisible] = useScrollAnimation({ threshold: 0.1 });
+
   const projectEntries = [
     {
       title: 'Ai Resume',
@@ -36,15 +39,21 @@ function Projects() {
 
   return (
     <section id="projects" className={styles.container}>
-            <h1 className="sectionTitle">Projects</h1>
-      <ul className={styles.list}>
-        {projectEntries.map((project) => (
-          <li key={project.title} className={styles.item}>
+      <h1 className="sectionTitle">Projects</h1>
+      <ul 
+        ref={listRef}
+        className={`${styles.list} ${isListVisible ? 'animate-fade-in-up' : 'animate-on-scroll'}`}
+      >
+        {projectEntries.map((project, index) => (
+          <li 
+            key={project.title} 
+            className={`${styles.item} ${isListVisible ? `animate-fade-in-up animate-delay-${(index + 1) * 100}` : 'animate-on-scroll'}`}
+          >
             <a
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${styles.title} hover`}
+              className={styles.title}
             >
               {project.title}
             </a>

@@ -1,10 +1,6 @@
 import { useTheme } from '../../common/ThemeContext';
-import SkillList from '../../common/SkillList';
 import styles from './SkillsStyles.module.css';
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper/modules';
-import 'swiper/css';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 import checkMarkIconLight from '../../assets/checkmark-light.svg';
 import checkMarkIconDark from '../../assets/checkmark-dark.svg';
@@ -12,35 +8,50 @@ import checkMarkIconDark from '../../assets/checkmark-dark.svg';
 function Skills() {
   const { theme } = useTheme();
   const checkMarkIcon = theme === 'light' ? checkMarkIconLight : checkMarkIconDark;
+  const [headerRef, isHeaderVisible] = useScrollAnimation();
+  const [gridRef, isGridVisible] = useScrollAnimation({ threshold: 0.1 });
 
-    const skills = [
-      "HTML", "CSS", "JavaScript", "React", "Node.js",
-      "Python", "SQL", "Git", "Figma", "Tailwind CSS"
-    ];
+  const skills = [
+    { name: "HTML", level: "Expert", icon: "🌐" },
+    { name: "CSS", level: "Expert", icon: "🎨" },
+    { name: "JavaScript", level: "Advanced", icon: "⚡" },
+    { name: "React", level: "Advanced", icon: "⚛️" },
+    { name: "Node.js", level: "Intermediate", icon: "🟢" },
+    { name: "Python", level: "Intermediate", icon: "🐍" },
+    { name: "SQL", level: "Intermediate", icon: "🗄️" },
+    { name: "Git", level: "Advanced", icon: "📦" },
+    { name: "Figma", level: "Advanced", icon: "🎯" },
+    { name: "Tailwind CSS", level: "Advanced", icon: "💨" }
+  ];
 
   return (
     <section id="skills" className={styles.container}>
-      <h1 className="sectionTitle">Skills</h1>
-      <Swiper
-        modules={[Autoplay]}
-        slidesPerView="auto"
-        spaceBetween={10}
-        loop={true}
-        speed={7000}
-        autoplay={{
-          delay: 0,
-          disableOnInteraction: true,
-          reverseDirection: false,
-        }}
-        allowTouchMove={false}
-        className={styles.skillSwiper}
+      <div 
+        ref={headerRef}
+        className={`${styles.skillsHeader} ${isHeaderVisible ? 'animate-fade-in-up' : 'animate-on-scroll'}`}
       >
-        {skills.concat(skills).map((skill, i) => (
-          <SwiperSlide key={i} className={styles.skillSlide}>
-            <SkillList src={checkMarkIcon} skill={skill} />
-          </SwiperSlide>
+        <h1 className="sectionTitle">Skills & Technologies</h1>
+        <p className={styles.skillsSubtitle}>
+          A comprehensive toolkit for building modern, scalable applications with focus on user experience and performance.
+        </p>
+      </div>
+      <div 
+        ref={gridRef}
+        className={`${styles.skillsGrid} ${isGridVisible ? 'animate-fade-in-up animate-delay-200' : 'animate-on-scroll'}`}
+      >
+        {skills.map((skill, index) => (
+          <div 
+            key={skill.name} 
+            className={`${styles.skillBadge} ${isGridVisible ? `animate-scale-in animate-delay-${(index % 5 + 1) * 100}` : 'animate-on-scroll'}`}
+          >
+            <div className={styles.skillIcon}>
+              <span style={{ fontSize: '2rem' }}>{skill.icon}</span>
+            </div>
+            <div className={styles.skillName}>{skill.name}</div>
+            <div className={styles.skillLevel}>{skill.level}</div>
+          </div>
         ))}
-      </Swiper>
+      </div>
     </section>
   );
 }

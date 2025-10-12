@@ -2,61 +2,80 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 25px;
+  align-items: center;
+  gap: clamp(2rem, 4vw, 4rem);
   text-align: center;
   height: 100dvh;
-  min-height: 500px;
+  min-height: 600px;
   position: relative;
   overflow: hidden;
-  padding: 1rem;
-
-  /* Background visuals are now global; hero stays above */
+  padding: clamp(2rem, 5vw, 4rem);
+  max-width: 1200px;
+  margin: 0 auto;
 
   .hero {
-    max-width: clamp(140px, 24vw, 320px);
-    transition: transform 0.4s ease;
+    max-width: clamp(120px, 20vw, 200px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 50%;
     position: relative;
     cursor: pointer;
     margin: 0 auto;
     will-change: transform;
+    box-shadow: var(--shadow-medium);
   }
 
   .hero:hover {
-    transform: scale(1.05);
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: var(--shadow-heavy);
   }
 
   h1 {
-    font-size: calc(2.5rem + 1vw);
+    font-size: clamp(3rem, 8vw, 6rem);
     color: var(--text-color);
     margin: 0;
     font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   h2 {
-    font-size: calc(1.2rem + 0.5vw);
-    color: var(--btn-color);
-    margin-top: -5px;
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    color: var(--text-secondary);
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: -0.01em;
   }
 
   span {
     display: flex;
-    gap: clamp(15px, 4vw, 25px);
+    gap: clamp(20px, 4vw, 32px);
     justify-content: center;
     flex-wrap: wrap;
-    margin: 0.5rem 0;
+    margin: 1rem 0;
 
     a {
       margin: 0;
-      transition: transform 0.2s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 12px;
+      border-radius: 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
 
       img {
-        width: clamp(24px, 5vw, 30px);
+        width: clamp(20px, 4vw, 24px);
+        height: clamp(20px, 4vw, 24px);
       }
     }
 
     a:hover {
       transform: translateY(-3px);
+      box-shadow: var(--shadow-light);
+      background: var(--accent-color);
+      border-color: var(--accent-color);
     }
   }
 
@@ -66,31 +85,34 @@
   }
 
   button {
-    background-color: var(--btn-color);
+    background: var(--gradient-primary);
     color: var(--btn-text-color);
     border: none;
-    border-radius: 20px;
-    width: 130px;
-    height: 45px;
-    font-size: 18px;
-    font-weight: bold;
-    transition: transform 0.2s ease;
+    border-radius: 12px;
+    padding: 18px 36px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-light);
   }
 
   button:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+    background: var(--gradient-accent);
   }
 
   button:active {
-    transform: translateY(1px);
+    transform: translateY(-1px);
   }
 
   .description {
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
-    line-height: 1.5;
-    max-width: 32ch;
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    line-height: 1.6;
+    max-width: 50ch;
     margin: 0 auto;
-    color: var(--text-color);
+    color: var(--text-secondary);
+    font-weight: 400;
   }
 }
 
@@ -102,22 +124,29 @@
 
 .colorMode {
   position: absolute;
-  right: -12px;
-  top: 5px;
-  width: 25px;
-  height: 25px;
-  transition: transform 0.2s ease;
+  right: -15px;
+  top: 8px;
+  width: 28px;
+  height: 28px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 6px;
+  border-radius: 8px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-light);
 }
 
 .colorMode:hover {
   cursor: pointer;
-  transform: rotate(30deg);
+  transform: rotate(180deg) scale(1.1);
+  box-shadow: var(--shadow-medium);
 }
 
 .info {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  align-items: center;
 }
 
 .gradientBackground {
@@ -127,23 +156,22 @@
 
 @media (max-width: 480px) {
   .container {
-    padding: 1.5rem 1rem;
-    gap: 20px;
+    padding: 2rem 1rem;
+    gap: 2rem;
   }
 }
 
-@media (width >= 800px) {
+@media (width >= 768px) {
   .container {
     flex-direction: row-reverse;
     align-items: center;
     justify-content: center;
-    gap: clamp(24px, 6vw, 56px);
-    padding: 2rem;
-    max-width: min(1100px, 100%);
-    margin: 0 auto;
+    gap: clamp(3rem, 8vw, 6rem);
+    padding: 3rem 2rem;
+    text-align: left;
 
     .hero {
-      max-width: clamp(200px, 22vw, 320px);
+      max-width: clamp(180px, 20vw, 250px);
       width: auto;
     }
     
@@ -153,19 +181,28 @@
     }
     
     .colorMode {
-      right: -15px;
-      top: 10px;
+      right: -18px;
+      top: 12px;
+    }
+
+    .info {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .description {
+      text-align: left;
     }
   }
 }
 
-@media (width >= 1400px) {
+@media (width >= 1200px) {
   .container {
-    padding: 2rem;
-    gap: clamp(32px, 5vw, 64px);
+    padding: 4rem 2rem;
+    gap: clamp(4rem, 10vw, 8rem);
     
     .hero {
-      max-width: clamp(240px, 18vw, 360px);
+      max-width: clamp(220px, 18vw, 300px);
       width: auto;
     }
   }

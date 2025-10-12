@@ -21,7 +21,7 @@ function Contact() {
       const data = await response.json();
 
       if (data.success) {
-        setResult("Form Submitted Successfully");
+        setResult("✅ Form Submitted Successfully! I'll get back to you soon.");
         event.target.reset();
 
         // Fire a celebratory full-screen confetti burst
@@ -38,11 +38,11 @@ function Contact() {
         frame();
       } else {
         console.log("Error", data);
-        setResult(data.message || "Submission failed");
+        setResult("❌ " + (data.message || "Submission failed. Please try again."));
       }
     } catch (error) {
       console.error("Fetch error:", error);
-      setResult("An error occurred while submitting the form.");
+      setResult("❌ An error occurred while submitting the form. Please try again.");
     }
   };
 
@@ -85,9 +85,13 @@ function Contact() {
             required
           ></textarea>
         </div>
-        <input className="hover btn" type="submit" value="Submit" />
+        <input className="btn" type="submit" value="Submit" />
       </form>
-      {result && <p>{result}</p>}
+      {result && (
+        <p className={`${styles.result} ${result.includes('✅') ? styles.success : styles.error}`}>
+          {result}
+        </p>
+      )}
     </section>
   );
 }
