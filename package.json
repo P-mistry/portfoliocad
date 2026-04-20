@@ -1,5 +1,5 @@
 {
-  "name": "harris- Mistry-2",
+  "name": "portfolio-cad",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,15 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "animejs": "^4.0.2",
-    "blotter": "^2.1.0",
-    "canvas-confetti": "^1.6.0",
-    "gsap": "^3.13.0",
-    "prop-types": "^15.8.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^7.7.0",
-    "swiper": "^11.2.10"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

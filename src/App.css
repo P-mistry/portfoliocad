@@ -1,12 +1,29 @@
-/* App-specific styles that complement the global design system */
-
 #root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 100%;
 }
 
-/* Enhanced scroll animations */
+.viewportFrame {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.pageShell {
+  position: relative;
+  z-index: 1;
+  width: min(780px, calc(100% - clamp(20px, 5vw, 56px)));
+  margin: 0 auto clamp(16px, 3.5vw, 40px);
+  flex: 1;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 28px 100px rgba(0, 0, 0, 0.42);
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -51,7 +68,6 @@
   }
 }
 
-/* Animation classes for scroll-triggered effects */
 .animate-fade-in-up {
   animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
@@ -68,14 +84,12 @@
   animation: scaleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-/* Staggered animation delays */
 .animate-delay-100 { animation-delay: 0.1s; }
 .animate-delay-200 { animation-delay: 0.2s; }
 .animate-delay-300 { animation-delay: 0.3s; }
 .animate-delay-400 { animation-delay: 0.4s; }
 .animate-delay-500 { animation-delay: 0.5s; }
 
-/* Initially hidden elements that will be animated */
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(30px);
@@ -87,37 +101,31 @@
   transform: translateY(0);
 }
 
-/* Enhanced focus styles for accessibility */
 *:focus-visible {
   outline: 2px solid var(--accent-color);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* Smooth transitions for theme changes */
 * {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Improved selection styling */
 ::selection {
   background: var(--accent-color);
   color: white;
 }
 
-/* Loading states */
 .loading {
   opacity: 0.6;
   pointer-events: none;
 }
 
-/* Error states */
 .error {
   border-color: #ef4444 !important;
   box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
 }
 
-/* Success states */
 .success {
   border-color: #10b981 !important;
   box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1) !important;

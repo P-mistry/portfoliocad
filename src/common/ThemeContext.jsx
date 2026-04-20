@@ -1,7 +1,9 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 const ThemeContext = createContext();
 
+// Hook used across sections; kept alongside provider for a single import surface.
+// eslint-disable-next-line react-refresh/only-export-components -- useTheme is not a component
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children }) => {
@@ -10,6 +12,7 @@ export const ThemeProvider = ({ children }) => {
   );
 
   useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
     document.body.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
   }, [theme]);

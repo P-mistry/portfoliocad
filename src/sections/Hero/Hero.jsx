@@ -1,7 +1,5 @@
 import styles from './HeroStyles.module.css';
 import heroImg from '../../assets/Design uten navn.png';
-import sun from '../../assets/sun.svg';
-import moon from '../../assets/moon.svg';
 import twitterLight from '../../assets/twitter-light.svg';
 import twitterDark from '../../assets/twitter-dark.svg';
 import githubLight from '../../assets/github-light.svg';
@@ -17,11 +15,28 @@ import { useTheme } from '../../common/ThemeContext';
 import { useEffect, useState } from 'react';
 import TypeWriter from '../../components/TypeWriter';
 
+const linkRows = [
+  {
+    title: 'My Projects',
+    body: 'Check out my projects and see what I have been working on.',
+    href: '#projects',
+  },
+  {
+    title: 'My Skills',
+    body: 'Check out my skills and see what I can do.',
+    href: '#skills',
+  },
+  {
+    title: 'My Contact',
+    body: 'Get in touch with me and see what I can do for you.',
+    href: '#contact',
+  },
+];
+
 function Hero() {
   const [isVisible, setIsVisible] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
 
-  const themeIcon = theme === 'light' ? sun : moon;
   const twitterIcon = theme === 'light' ? twitterLight : twitterDark;
   const githubIcon = theme === 'light' ? githubLight : githubDark;
   const linkedinIcon = theme === 'light' ? linkedinLight : linkedinDark;
@@ -34,76 +49,100 @@ function Hero() {
 
   const fadeInUp = {
     opacity: isVisible ? 1 : 0,
-    transform: `translateY(${isVisible ? 0 : '30px'})`,
-    transition: 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
+    transform: `translateY(${isVisible ? 0 : '20px'})`,
+    transition: 'opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)',
   };
 
   return (
-    <section id="hero" className={`${styles.container} ${styles.gradientBackground}`}>
-      <div 
-        className={styles.colorModeContainer} 
-        style={{
-          ...fadeInUp,
-          transitionDelay: '0.2s'
-        }}
-      >
-        <img
-          src={heroImg}
-          className={styles.hero}
-          alt="Profile picture of Parth Mistry"
-        />
-        <img
-          className={styles.colorMode}
-          src={themeIcon}
-          alt="Color mode icon"
-          onClick={toggleTheme}
-        />
-      </div>
-      <div 
-        className={styles.info} 
-        style={{
-          ...fadeInUp,
-          transitionDelay: '0.4s'
-        }}
-      >
-        <h1>Parth Mistry</h1>
-        <h2>
-          <TypeWriter text="Software Developer" delay={40} />
-        </h2>
-        <span>
+    <section id="hero" className={styles.page}>
+      <div className={styles.heroCard}>
+        <div className={styles.heroTop} style={{ ...fadeInUp, transitionDelay: '0.05s' }}>
+          <span className={styles.cornerTL} aria-hidden />
+          <span className={styles.cornerTR} aria-hidden />
+          <div className={styles.heroTopGrid}>
+            <div className={styles.introBlock}>
+              <p className={styles.internetName}>Internet name:</p>
+              <h1 className={styles.displayName}>
+                <span className={styles.displayLine}>Parth</span>
+                <span className={styles.displayLineAccent}>Mistry</span>
+              </h1>
+              <p className={styles.roleLine}>
+                <TypeWriter text="Software developer" delay={42} />
+              </p>
+            </div>
+            <div className={styles.profileColumn}>
+              <div className={styles.photoFrame}>
+                <img src={heroImg} className={styles.heroImg} alt="Parth Mistry" />
+              </div>
+              <div className={styles.idStrip}>
+                <div className={styles.idLeft}>
+                  <p className={styles.profileName}>Parth Mistry</p>
+                  <p className={styles.profileRole}>Software developer</p>
+                </div>
+                <span className={styles.yearBadge}>2026</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.heroBio} style={{ ...fadeInUp, transitionDelay: '0.1s' }}>
+          <p className={styles.description}>
+            I build fast, accessible React experiences for real businesses — clean UI, sharp interactions, and code you
+            can grow with.
+          </p>
+          <div className={styles.bioFooter}>
+            <span className={styles.cornerBL} aria-hidden /> 
+            <span className={styles.cornerBR} aria-hidden /> 
+            <div className={styles.location}>Based in India · Remote worldwide</div>
+          </div>
+        </div>
+
+        <div className={styles.socialStrip} style={{ ...fadeInUp, transitionDelay: '0.12s' }}>
           {[
-            { href: "https://x.com/parth200510", icon: twitterIcon, alt: "Twitter" },
-            { href: "https://github.com/P-mistry", icon: githubIcon, alt: "Github" },
-            { href: "https://www.linkedin.com/in/parthmistry7/", icon: linkedinIcon, alt: "LinkedIn" },
-            { href: "https://www.instagram.com/parrth.5/", icon: instagramIcon, alt: "Instagram" },
-            { href: "https://www.vwcindia.com/", icon: websiteIcon, alt: "Website" }
-          ].map((social, index) => (
-            <a 
+            { href: 'https://x.com/parth200510', icon: twitterIcon, alt: 'Twitter' },
+            { href: 'https://github.com/P-mistry', icon: githubIcon, alt: 'Github' },
+            { href: 'https://www.linkedin.com/in/parthmistry7/', icon: linkedinIcon, alt: 'LinkedIn' },
+            { href: 'https://www.instagram.com/parrth.5/', icon: instagramIcon, alt: 'Instagram' },
+            { href: 'https://www.vwcindia.com/', icon: websiteIcon, alt: 'Website' },
+          ].map((social, i) => (
+            <a
               key={social.alt}
-              href={social.href} 
+              href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                transitionDelay: `${0.6 + (index * 0.1)}s`
-              }}
+              className={styles.socialCell}
+              aria-label={social.alt}
+              style={i > 0 ? { borderLeft: '1px solid var(--border-color)' } : undefined}
             >
-              <img src={social.icon} alt={`${social.alt} icon`} />
+              <img src={social.icon} alt="" aria-hidden className={styles.socialIcon} />
             </a>
           ))}
-        </span>
-        <p className={styles.description}>
-          With a passion for developing modern React web apps for commercial
-          businesses.
-        </p>
-        <a 
-          href={CV} 
-          download
-          style={{
-            transitionDelay: '1s'
-          }}
-        >
-          <button className="hover">Resume</button>
-        </a>
+        </div>
+
+        <ul className={styles.linkRows} style={{ ...fadeInUp, transitionDelay: '0.18s' }}>
+          {linkRows.map((row) => (
+            <li key={row.title} className={styles.linkRow}>
+              <a href={row.href} className={styles.linkRowInner}>
+                <div className={styles.linkRowText}>
+                  <span className={styles.linkRowTitle}>{row.title}</span>
+                  <span className={styles.linkRowBody}>{row.body}</span>
+                </div>
+                <span className={styles.linkRowArrow} aria-hidden>
+                  →
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div className={styles.ctaRow} style={{ ...fadeInUp, transitionDelay: '0.24s' }}>
+          <a href={CV} download className="btnBook btnBookFilled">
+            Download resume
+          </a>
+          <a href="#projects" className="btnBook">
+            View work
+          </a>
+        </div>
       </div>
     </section>
   );
